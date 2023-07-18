@@ -1,9 +1,10 @@
-package lyzzcw.stupid.spring.day2.Import;
+package lyzzcw.stupid.spring.day5.aop;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
+
 
 /**
  * @author lzy
@@ -15,10 +16,12 @@ public class Test {
     @org.junit.Test
     public void test() {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(ImportConfig.class);
+                new AnnotationConfigApplicationContext(AspectConfig.class);
         System.out.println("IOC容器启动完成。。。");
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach(System.out::println);
+        AspectService aspectService = context.getBean(AspectService.class);
+        aspectService.print();
         context.close();
     }
 }

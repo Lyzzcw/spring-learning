@@ -34,7 +34,16 @@
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- spring6 中 使用@Resource注解需要增加如下依赖 begin-->
         <dependency>
             <groupId>jakarta.annotation</groupId>
@@ -42,6 +51,15 @@
             <version>2.1.1</version>
         </dependency>
         <!-- spring6 中 使用@Resource注解需要增加如下依赖 end-->
+
+        <!-- spring6 中 使用@Aspect注解需要增加如下依赖 end-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.19</version>
+<!--            <scope>runtime</scope>-->
+        </dependency>
+        <!-- spring6 中 使用@Aspect注解需要增加如下依赖 end-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
