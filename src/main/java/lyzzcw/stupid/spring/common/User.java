@@ -2,6 +2,7 @@ package lyzzcw.stupid.spring.common;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author lzy
@@ -11,6 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class User {
     private String name;
 

@@ -37,4 +37,7 @@ public class ValueConfig {
     @Value("#{'${server.name}'.split(',')}")
     private List<String> serverNames;
 
+    @Value("#{'redis://'.concat('${spring.redis.host}').concat(':').concat('${spring.redis.port}')}")
+    private String redisAddress;
+
 }
