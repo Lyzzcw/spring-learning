@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: statemachine
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 0a6538f6-cefc-47c9-9a60-c398fd3432e3
+        group: consumer_group
+        enabled: false
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        namespace: 0a6538f6-cefc-47c9-9a60-c398fd3432e3
+        group: consumer_group
+        enabled: false
+management:
+  endpoints:
+    web:
+      exposure: ## yml文件中存在特殊字符，必须用单引号包含，否则启动报错
+        include: '*'

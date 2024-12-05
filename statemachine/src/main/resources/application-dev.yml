@@ -1,0 +1,21 @@
+server:
+  port: 8999
+  servlet:
+    context-path:
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/stupid?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+mybatis-plus:
+  #  classpath:/com/*/*/mapper/*Mapper.xml 放在resources目录下classpath:/mapper/**.xml
+  mapper-locations: classpath:/mapper/**.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  config: classpath:logback-spring.xml
