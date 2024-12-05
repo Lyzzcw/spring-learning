@@ -20,11 +20,11 @@ public class Test {
         System.out.println("IOC容器启动完成。。。");
         String[] definitionNames = context.getBeanDefinitionNames();
         Arrays.stream(definitionNames).forEach(System.out::println);
-        PrimaryService autowiredService  = context.getBean(PrimaryService.class);
 
+        PrimaryService autowiredService  = context.getBean(PrimaryService.class);
         System.out.println(autowiredService);
         autowiredService.apply();
-
+        autowiredService.apply1();
         context.close();
     }
 }

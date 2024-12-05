@@ -25,6 +25,11 @@ public class ListenerEventConfig {
     @Qualifier("lyzzcw-stupid-executor")
     private Executor taskExecutor;
 
+    /**
+     * Spring的事件监听机制（发布订阅模型）实际上并不是异步的（默认情况下）
+     * 这里加入线程池，调整为异步模型
+     * @return
+     */
     @Bean(name = AbstractApplicationContext.APPLICATION_EVENT_MULTICASTER_BEAN_NAME)
     public ApplicationEventMulticaster applicationEventMulticaster(){
         SimpleApplicationEventMulticaster simple =  new SimpleApplicationEventMulticaster();

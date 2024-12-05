@@ -16,9 +16,15 @@ public class Test {
                 new AnnotationConfigApplicationContext(ConfigurationAnnotationConfig.class);
         ConfigurationAnnotationConfig config =
                 context.getBean(ConfigurationAnnotationConfig.class);
-        Person person1 = config.person();
-        Person person2 = config.person();
-        System.out.println(person1 == person2); //true
+        new Thread(()->{
+            Person person1 = config.person();
+            System.out.println(person1);
+        }).start();
+        new Thread(()->{
+            Person person2 = config.person();
+            System.out.println(person2);
+        }).start();
+
     }
 
     @org.junit.Test

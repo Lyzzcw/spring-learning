@@ -10,8 +10,11 @@ import org.springframework.context.annotation.Import;
  * Date: 2023/7/13 14:29
  * Description: No Description
  */
-@Import(value = {Person.class,CustomizeImportSelector.class
-        ,CustomizeImportBeanDefinitionRegistrar.class})
+@Import(value = {
+        Person.class,
+        CustomizeImportSelector.class,
+        CustomizeImportBeanDefinitionRegistrar.class
+})
 @Configuration
 public class ImportConfig {
 }
