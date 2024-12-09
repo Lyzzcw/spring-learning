@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.statemachine.StateMachineContext;
 import org.springframework.statemachine.StateMachinePersist;
@@ -55,15 +56,21 @@ public class StateMachinePersistConfig <S, E>{
         });
     }
 
+    @Bean(name = "repositoryStateMachinePersist")
+    public RepositoryStateMachinePersist<S,E> repositoryStateMachinePersist(){
+        RedisStateMachineContextRepository<S, E> repository = new RedisStateMachineContextRepository<>(redisConnectionFactory);
+        return new RepositoryStateMachinePersist<>(repository);
+    }
+
     /**
      * 持久化到redis中，在分布式系统中使用
      *
      */
-    @Bean(name = "stateMachineRedisPersister")
-    public RedisStateMachinePersister<S, E> getRedisPersister() {
-        RedisStateMachineContextRepository<S, E> repository = new RedisStateMachineContextRepository<>(redisConnectionFactory);
-        RepositoryStateMachinePersist<S, E> p = new RepositoryStateMachinePersist<>(repository);
-        return new RedisStateMachinePersister<>(p);
+    @Bean(name = "redisStateMachinePersister")
+    @DependsOn("repositoryStateMachinePersist")
+    public StateMachinePersister<S, E,String> redisStateMachinePersister(
+            RepositoryStateMachinePersist<S,E> repositoryStateMachinePersist) {
+        return new RedisStateMachinePersister<>(repositoryStateMachinePersist);
     }
 
 }

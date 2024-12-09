@@ -7,9 +7,11 @@
         select * from `order` where id = #{id}
     </select>
 
-    <insert id="insert" parameterType="lyzzcw.stupid.spring.statemachine.domain.Order">
-        insert into `order` (id,order_code,`status`,`name`,price,delete_flag,create_time,update_time,create_user_code,update_user_code,remark)
-        values (#{id},#{orderCode},#{status},#{name},#{price},#{deleteFlag},#{createTime},#{updateTime},#{createUserCode},#{updateUserCode},#{remark})
+    <insert id="insert" parameterType="lyzzcw.stupid.spring.statemachine.domain.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into `order`
+            (id,order_code,`status`,`name`,price,delete_flag,create_time,update_time,create_user_code,update_user_code,remark)
+        values
+            (#{id},#{orderCode},#{status},#{name},#{price},#{deleteFlag},#{createTime},#{updateTime},#{createUserCode},#{updateUserCode},#{remark})
     </insert>
 
     <update id="updateById" parameterType="lyzzcw.stupid.spring.statemachine.domain.Order">

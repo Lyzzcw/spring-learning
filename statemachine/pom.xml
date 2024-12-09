@@ -15,7 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-statemachine.version>3.1.0</spring-statemachine.version>
+        <spring-statemachine.version>3.2.0</spring-statemachine.version>
         <spring.boot.version>2.6.13</spring.boot.version>
     </properties>
 

@@ -6,7 +6,7 @@ package lyzzcw.stupid.spring.statemachine.enums;
  * Date: 2024/12/6 9:04
  * Description: No Description
  */
-public enum OrderStatus {
+public enum OrderState {
 
     WAIT_PAYMENT(1, "待支付"),
     WAIT_DELIVER(2, "待发货"),
@@ -17,7 +17,7 @@ public enum OrderStatus {
     private final Integer key;
     private final String desc;
 
-    OrderStatus(Integer key, String desc) {
+    OrderState(Integer key, String desc) {
         this.key = key;
         this.desc = desc;
     }
@@ -30,8 +30,8 @@ public enum OrderStatus {
         return desc;
     }
 
-    public static OrderStatus getByKey(Integer key) {
-        for (OrderStatus e : values()) {
+    public static OrderState getByKey(Integer key) {
+        for (OrderState e : values()) {
             if (e.getKey().equals(key)) {
                 return e;
             }

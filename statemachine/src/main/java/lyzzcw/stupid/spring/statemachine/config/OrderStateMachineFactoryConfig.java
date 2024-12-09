@@ -7,6 +7,7 @@ import lyzzcw.stupid.spring.statemachine.guard.CancelGuard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachine;
+import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
@@ -14,23 +15,23 @@ import org.springframework.statemachine.config.builders.StateMachineTransitionCo
 
 import java.util.EnumSet;
 
+
 /**
+ * 订单状态机工厂配置
+ * ThreadLocal + Factory 解决状态机并发问题
  * @author Luiz
- * @version 1.0
- * Date: 2024/12/6 10:25
- * Description: 订单状态机规则配置(单状态机配置，线程安全问题)
+ * @date 2024/12/09
  */
-//@Configuration
-//@EnableStateMachine(name = "orderStateMachine")
-@Deprecated
-public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<OrderState, OrderStateChangeEvent> {
+@Configuration
+@EnableStateMachineFactory(name = "orderStateMachineFactory")
+public class OrderStateMachineFactoryConfig extends StateMachineConfigurerAdapter<OrderState, OrderStateChangeEvent> {
 
     /**
      * 配置设置
      */
     public void configure(StateMachineConfigurationConfigurer<OrderState, OrderStateChangeEvent> config) throws Exception {
         config.withConfiguration()
-                .machineId("order");
+                .machineId("orderStateMachine");
 
     }
     /**
