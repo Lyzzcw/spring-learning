@@ -39,3 +39,14 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   config: classpath:logback-spring.xml
+cache:
+  type:
+    local: guava
+    distribute: redis
+distribute:
+  type:
+    enable: true
+    # single or cluster
+    arrange: single
+    lock: redisson
+    semaphore: redisson

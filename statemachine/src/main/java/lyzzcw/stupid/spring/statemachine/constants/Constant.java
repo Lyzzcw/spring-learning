@@ -8,6 +8,7 @@ package lyzzcw.stupid.spring.statemachine.constants;
  */
 public interface Constant {
     String orderRedisPrefix = "order_statemachine_";
+    String orderRedisLockPrefix = "order_statemachine_lock_";
     String orderHeader = "order";
     String cancelTransition = "cancelTransition";
     String payTransition = "payTransition";
