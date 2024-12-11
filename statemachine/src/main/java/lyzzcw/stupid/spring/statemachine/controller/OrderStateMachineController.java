@@ -1,11 +1,12 @@
 package lyzzcw.stupid.spring.statemachine.controller;
 
-import lyzzcw.stupid.spring.statemachine.domain.Order;
 import lyzzcw.stupid.spring.statemachine.enums.OrderState;
-import lyzzcw.stupid.spring.statemachine.service.OrderService;
 import lyzzcw.stupid.spring.statemachine.service.OrderStateMachineService;
 import lyzzcw.work.component.domain.common.entity.Result;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 

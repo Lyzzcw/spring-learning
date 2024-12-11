@@ -5,8 +5,6 @@ import lyzzcw.stupid.spring.statemachine.enums.OrderState;
 import lyzzcw.stupid.spring.statemachine.enums.OrderStateChangeEvent;
 import lyzzcw.stupid.spring.statemachine.guard.CancelGuard;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.config.EnableStateMachine;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
