@@ -11,4 +11,5 @@ import lyzzcw.stupid.spring.statemachine.enums.OrderState;
 public interface OrderStateMachineService {
     OrderState read(String id);
     void write(String id, OrderState orderState);
+    void exportToUml();
 }

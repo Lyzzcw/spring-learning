@@ -45,6 +45,14 @@ public class StateMachineManager {
         this.restore(contextId);
     }
 
+    public StateMachine<OrderState, OrderStateChangeEvent> empty() {
+        // 创建新的状态机实例
+        StateMachine<OrderState, OrderStateChangeEvent> stateMachine =
+                orderStateMachineFactory.getStateMachine();
+        LocalStateMachine.set(stateMachine);
+        return LocalStateMachine.get();
+    }
+
     public StateMachine<OrderState, OrderStateChangeEvent> getStateMachine() {
         return LocalStateMachine.get();
     }

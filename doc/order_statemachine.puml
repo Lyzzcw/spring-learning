@@ -1,0 +1,12 @@
+@startuml
+start
+:WAIT_PAYMENT;
+if(PAY?) then(yes)
+    :WAIT_DELIVER;
+    :WAIT_RECEIVE;
+    :FINISH;
+    stop
+else (no)
+    :CLOSE;
+    stop
+@enduml

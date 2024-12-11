@@ -39,4 +39,13 @@ public class OrderStateMachineController {
         orderStateMachineService.write(id, OrderState.getByKey(state));
         return Result.ok();
     }
+
+    /**
+     * 导出UML文件
+     */
+    @GetMapping("/exportToUml")
+    public Result exportToUml() {
+        orderStateMachineService.exportToUml();
+        return Result.ok();
+    }
 }

@@ -30,7 +30,8 @@ public class OrderStateMachineConfig extends StateMachineConfigurerAdapter<Order
      */
     public void configure(StateMachineConfigurationConfigurer<OrderState, OrderStateChangeEvent> config) throws Exception {
         config.withConfiguration()
-                .machineId("order");
+                .machineId("order")
+                .autoStartup(true);
 
     }
     /**
