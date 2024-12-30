@@ -11,6 +11,7 @@
     <modules>
         <module>spring6</module>
         <module>statemachine</module>
+        <module>spring-ai-demo</module>
     </modules>
 
     <properties>
