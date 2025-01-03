@@ -7,7 +7,7 @@ import lyzzcw.stupid.spring.statemachine.enums.OrderState;
 import lyzzcw.stupid.spring.statemachine.enums.OrderStateChangeEvent;
 import lyzzcw.stupid.spring.statemachine.mapper.OrderMapper;
 import lyzzcw.stupid.spring.statemachine.support.StateMachineManager;
-import lyzzcw.work.component.common.utils.AssertUtils;
+import lyzzcw.work.component.common.utils.AssertUtil;
 import org.springframework.messaging.Message;
 import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.action.Action;
@@ -34,7 +34,7 @@ public class CancelAction implements Action<OrderState, OrderStateChangeEvent> {
     public void execute(StateContext<OrderState, OrderStateChangeEvent> stateContext) {
         Message<OrderStateChangeEvent> message = stateContext.getMessage();
         Order order = (Order) message.getHeaders().get(Constant.orderHeader);
-        AssertUtils.notNull(order, "取消支付，状态机订单信息异常");
+        AssertUtil.notNull(order, "取消支付，状态机订单信息异常");
         log.info("取消支付,id/message -> {}/{}",stateMachineManager.getStateMachine().getId(),message);
         try {
             order.setStatus(OrderState.CLOSED.getKey());

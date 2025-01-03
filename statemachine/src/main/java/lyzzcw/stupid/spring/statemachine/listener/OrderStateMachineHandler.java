@@ -9,7 +9,7 @@ import lyzzcw.stupid.spring.statemachine.enums.OrderStateChangeEvent;
 import lyzzcw.stupid.spring.statemachine.mapper.OrderMapper;
 import lyzzcw.stupid.spring.statemachine.support.StateContextHolder;
 import lyzzcw.stupid.spring.statemachine.support.StateMachineManager;
-import lyzzcw.work.component.common.utils.AssertUtils;
+import lyzzcw.work.component.common.utils.AssertUtil;
 import org.springframework.messaging.Message;
 import org.springframework.statemachine.annotation.OnTransition;
 import org.springframework.stereotype.Component;
@@ -55,7 +55,7 @@ public class OrderStateMachineHandler {
     public void payTransition() {
         Message<OrderStateChangeEvent> message = StateContextHolder.getStateContext().getMessage();
         Order order = (Order) message.getHeaders().get(Constant.orderHeader);
-        AssertUtils.notNull(order, "支付，状态机订单信息异常");
+        AssertUtil.notNull(order, "支付，状态机订单信息异常");
         log.info("支付,id/message -> {}/{}",stateMachineManager.getStateMachine().getId(),message);
         try {
             order.setStatus(OrderState.WAIT_DELIVER.getKey());
@@ -82,7 +82,7 @@ public class OrderStateMachineHandler {
     public void deliverTransition() {
         Message<OrderStateChangeEvent> message = StateContextHolder.getStateContext().getMessage();
         Order order = (Order) message.getHeaders().get(Constant.orderHeader);
-        AssertUtils.notNull(order, "发货，状态机订单信息异常");
+        AssertUtil.notNull(order, "发货，状态机订单信息异常");
         log.info("发货,id/message -> {}/{}",stateMachineManager.getStateMachine().getId(),message);
         try {
             //更新订单
@@ -110,7 +110,7 @@ public class OrderStateMachineHandler {
     public void receiveTransition() {
         Message<OrderStateChangeEvent> message = StateContextHolder.getStateContext().getMessage();
         Order order = (Order) message.getHeaders().get(Constant.orderHeader);
-        AssertUtils.notNull(order, "确认收货，状态机订单信息异常");
+        AssertUtil.notNull(order, "确认收货，状态机订单信息异常");
         log.info("确认收货,id/message -> {}/{}",stateMachineManager.getStateMachine().getId(),message);
         try {
             //更新订单

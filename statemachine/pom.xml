@@ -61,12 +61,12 @@
         <dependency>
             <groupId>lyzzcw.work.component</groupId>
             <artifactId>domain-parents</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>lyzzcw.work.component</groupId>
             <artifactId>common-parents</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
 
         <dependency>

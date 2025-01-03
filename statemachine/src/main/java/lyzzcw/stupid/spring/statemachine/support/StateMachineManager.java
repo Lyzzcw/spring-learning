@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import lyzzcw.stupid.spring.statemachine.enums.OrderState;
 import lyzzcw.stupid.spring.statemachine.enums.OrderStateChangeEvent;
 import lyzzcw.stupid.spring.statemachine.listener.OrderStateListener;
-import lyzzcw.work.component.common.utils.AssertUtils;
+import lyzzcw.work.component.common.utils.AssertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachineContext;
@@ -65,7 +65,7 @@ public class StateMachineManager {
      */
     public void restore(String contextId) throws Exception {
         StateMachine<OrderState, OrderStateChangeEvent> stateMachine = LocalStateMachine.get();
-        AssertUtils.notNull(stateMachine, "must init state machine first");
+        AssertUtil.notNull(stateMachine, "must init state machine first");
         final StateMachineContext<OrderState, OrderStateChangeEvent> context =
                 repositoryStateMachinePersist.read(contextId);
         stateMachine.stopReactively().block();
@@ -81,7 +81,7 @@ public class StateMachineManager {
      */
     public void persist(String contextId) throws Exception {
         StateMachine<OrderState, OrderStateChangeEvent> stateMachine = LocalStateMachine.get();
-        AssertUtils.notNull(stateMachine, "must init state machine first");
+        AssertUtil.notNull(stateMachine, "must init state machine first");
         repositoryStateMachinePersist.write(StateMachineUtils.buildStateMachineContext(stateMachine), contextId);
         this.stop();
     }

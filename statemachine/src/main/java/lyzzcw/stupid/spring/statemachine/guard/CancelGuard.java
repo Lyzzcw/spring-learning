@@ -6,7 +6,7 @@ import lyzzcw.stupid.spring.statemachine.domain.Order;
 import lyzzcw.stupid.spring.statemachine.enums.OrderState;
 import lyzzcw.stupid.spring.statemachine.enums.OrderStateChangeEvent;
 import lyzzcw.stupid.spring.statemachine.mapper.OrderMapper;
-import lyzzcw.work.component.common.utils.AssertUtils;
+import lyzzcw.work.component.common.utils.AssertUtil;
 import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.guard.Guard;
 
@@ -26,7 +26,7 @@ public class CancelGuard implements Guard<OrderState, OrderStateChangeEvent> {
     public boolean evaluate(StateContext<OrderState, OrderStateChangeEvent> stateContext) {
         log.info("CancelGuard,id/message -> {}/{}",stateContext.getStateMachine().getId(),stateContext.getMessage());
         Order order = (Order) stateContext.getMessageHeaders().get(Constant.orderHeader);
-        AssertUtils.notNull(order, "CancelGuard，订单信息异常");
+        AssertUtil.notNull(order, "CancelGuard，订单信息异常");
         log.info("CancelGuard，state 反馈信息：{}", stateContext.getExtendedState().getVariables());
         Order order1 = orderMapper.selectById(order.getId());
         log.info("CancelGuard cancel again:{}", order1);
